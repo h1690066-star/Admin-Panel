@@ -195,7 +195,15 @@ export default function OrderReceiptModal({ order, isOpen, onClose, onStatusUpda
                     </div>
                   ) : receiptUrl ? (
                     <a href={receiptUrl} target="_blank" rel="noreferrer" className="w-full h-full block">
-                      <img src={receiptUrl} alt="To'lov Cheki" className="w-full h-full object-contain p-2 hover:scale-105 transition-transform" />
+                      <img
+                        src={receiptUrl}
+                        alt="To'lov Cheki"
+                        className="w-full h-full object-contain p-2 hover:scale-105 transition-transform"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          setReceiptError("Chek rasmi serverda topilmadi");
+                        }}
+                      />
                     </a>
                   ) : (
                     <div className="text-center p-4 text-slate-400 text-xs">

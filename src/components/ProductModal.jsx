@@ -178,6 +178,7 @@ export default function ProductModal({ isOpen, onClose, onRefresh, editingProduc
       const data = new FormData();
       data.append('name', formData.name);
       data.append('category', formData.category);
+      data.append('used', (formData.category === 'Used Phones' || formData.category === 'B/U Telefonlar') ? 'true' : 'false');
       data.append('brand', formData.brand);
       data.append('price', formData.price);
       if (formData.oldPrice) data.append('oldPrice', formData.oldPrice);
